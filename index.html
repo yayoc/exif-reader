@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exif Reader</title>
+    <meta name="description" content="Exif Reader">
+    <meta name="keywords" content="Exif,Reader">
+    <meta name="author" content="Nobuhide Yayoshi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+            padding: 1rem;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        label {
+            display: block;
+        }
+        input {
+            margin: 1rem 0;
+        }
+        img {
+            width: 100%;
+        }
+        dt {
+            font-weight: bold;
+            line-height: 1.25;
+        }
+        dd {
+            margin-inline-start: 0;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exif Reader</h1>
+    <label for="files">Pick a file, Only .jpg and .tiff images are supported.</label>
+    <input type="file" id="files" required />
+    <output name="output" id="output" for="files"></output>
+</body>
+</html>
