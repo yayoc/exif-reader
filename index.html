@@ -1,19 +1,35 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Exif Reader</title>
-    <meta name="description" content="Exif Reader">
+    <meta name="description" content="Exif Reader PWA">
     <meta name="keywords" content="Exif,Reader">
     <meta name="author" content="Nobuhide Yayoshi">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f96167">
+    <link rel="manifest" href="/manifest.json">
+    <!-- icon in the highest resolution we need it for -->
+    <link rel="icon" sizes="192x192" href="/images/icons/icon-192x192.png">
+
+    <!-- reuse same icon for Safari -->
+    <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png">
+
+    <!-- multiple icons for IE -->
+    <meta name="msapplication-square310x310logo" content="/images/icons/icon-384x384.png">
     <style>
+        :root {
+            color-scheme: light dark;
+        }
         body {
             font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
             padding: 1rem;
             margin: 0;
+            background: #fce77d;
         }
         h1 {
             font-size: 3rem;
+            color: #f96167;
         }
         label {
             display: block;
@@ -32,6 +48,11 @@
             margin-inline-start: 0;
             margin-bottom: 0.5rem;
         }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: hsl(203.6, 100%, 12%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -40,4 +61,15 @@
     <input type="file" id="files" required />
     <output name="output" id="output" for="files"></output>
 </body>
+<script>
+    if("serviceWorker" in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>
 </html>
